@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button, LinearProgress, Box } from '@mui/material';
+import { Card, CardContent, Typography, Button, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 // Enhanced LinearProgress with Stylish Updates
-const ThickLinearProgress = styled(LinearProgress)(({ theme }) => ({
+/*const ThickLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 12,
   borderRadius: 6,
   backgroundColor: theme.palette.grey[300],
@@ -12,7 +12,7 @@ const ThickLinearProgress = styled(LinearProgress)(({ theme }) => ({
     borderRadius: 6,
     background: 'linear-gradient(to right, #00e676, #00c853)',
   },
-}));
+}));*/
 
 // Enhanced Card styling for phenomenal appearance
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -48,18 +48,17 @@ const StyledButton = styled(Button)({
   },
 });
 
-const ProgressText = styled(Typography)({
+/*const ProgressText = styled(Typography)({
   color: '#FFF', // Bright white color for visibility
   fontWeight: 'bold',
   fontSize: '0.85rem',
-});
+});*/
 
 // Main LevelCard Component
 const LevelCard = ({ levelId, levelName, userEmail, userName }) => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    console.log(levelName, levelId);
     navigate('/flash-card', { state: { levelId, levelName, userEmail, userName } });
   };
 

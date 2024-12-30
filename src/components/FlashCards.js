@@ -5,6 +5,7 @@ import { Button, Box, Typography, LinearProgress } from '@mui/material';
 import { styled } from '@mui/system';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import api_url from "../endpoint"
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -93,9 +94,10 @@ export default function FlashCards() {
   };
 
   const handleGreenClick = async () => {
+    console.log(userName)
     const currentFlashcard = getCurrentFlashcard();
 
-    const url = 'http://localhost:5000/isKnown'
+    const url = api_url + '/isKnown'
 
     const formData = {
       word : currentFlashcard.word,
@@ -121,7 +123,7 @@ export default function FlashCards() {
   const handleRedClick = async () => {
     const currentFlashcard = getCurrentFlashcard();
 
-    const url = 'http://localhost:5000/isKnown'
+    const url = api_url + '/isKnown'
 
     const formData = {
       word : currentFlashcard.word,
@@ -153,7 +155,7 @@ export default function FlashCards() {
 
   const getFlashCards = async () => {
     try {
-      const url = 'http://localhost:5000/getFlashcards_level_n';
+      const url = api_url + '/getFlashcards_level_n';
       const response = await axios.post(url, { levelId });
       setFlashcards(response.data.data);
     } catch (error) {
@@ -167,7 +169,7 @@ export default function FlashCards() {
 
   const fetchMasteredCount = async () => {
     try {
-      const url = 'http://localhost:5000/getMasteredCount';
+      const url = api_url + '/getMasteredCount';
       const response = await axios.post(url, { userEmail, levelId });
       if (response.data && response.data.mastered_count !== undefined) {
         setMasteredCount(response.data.mastered_count); // Set the fetched percentage
@@ -180,7 +182,7 @@ export default function FlashCards() {
   useEffect(() => {
     fetchMasteredCount();
     getFlashCards();
-  }, []);
+  });
 
   useEffect(() => {
     // Whenever currentIndex changes, move the carousel to the correct slide
@@ -226,7 +228,7 @@ export default function FlashCards() {
         <Box width="50%" marginRight={1}>
           <LinearProgress 
             variant="determinate" 
-            value={((currentIndex + 1) / flashcards.length) * 100} 
+            value={masteredCount} 
             sx={{
               height: 12,
               borderRadius: 6,

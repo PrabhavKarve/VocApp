@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Box, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
 import { Link, useNavigate} from 'react-router-dom';
+import api_url from "../endpoint"
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -29,14 +30,12 @@ const SignUpPage = () => {
 
     if (formData.confirmPassword === formData.password) {
 
-      axios.post('http://localhost:5000/signup', formData)
+      axios.post(api_url + '/signup', formData)
         .then(res => {
             console.log("signup req sent")
             if (res.data === "exist") {
-                console.log("server responded")
                 alert("User already exists");
-            } else if (res.data === "notexist") {
-                console.log("server responded")
+            } else if (res.data.message === "User registered successfully") {
                 navigate("/home", { state: { id: formData.email } });
             }
         })

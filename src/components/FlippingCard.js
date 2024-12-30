@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContent as MuiCardContent, Typography , Box} from '@mui/material';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import '../App.css';
 
