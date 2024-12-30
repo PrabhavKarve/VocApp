@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef  } from "react";
-import Carousel from "react-elastic-carousel";
 import FlippingCard from "./FlippingCard";
 import { Button, Box, Typography, LinearProgress } from '@mui/material';
 import { styled } from '@mui/system';
@@ -7,12 +6,11 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import api_url from "../endpoint"
 
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 1 },
-  { width: 768, itemsToShow: 1 },
-  { width: 1200, itemsToShow: 1 },
-];
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './styles.css';
+import { Navigation } from 'swiper/modules';
 
 const GradientBackground = styled(Box)({
   width: '100%',
@@ -86,15 +84,19 @@ export default function FlashCards() {
   const [flashcards, setFlashcards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0); // Track current index
 
-  // Create a ref to the carousel instance
+  const swiperRef = useRef(null);
   const carouselRef = useRef(null);
+
+  const handleSlideChange = (swiper) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
 
   const handleCardClick = () => {
     setIsFlipped(!isFlipped);
   };
 
   const handleGreenClick = async () => {
-    console.log(userName)
+    alert(currentIndex)
     const currentFlashcard = getCurrentFlashcard();
 
     const url = api_url + '/isKnown'
@@ -147,10 +149,13 @@ export default function FlashCards() {
 
   // Function to move to the next card
   const moveToNextCard = () => {
-    setCurrentIndex((prevIndex) => {
+    /*setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex + 1;
       return nextIndex < flashcards.length ? nextIndex : prevIndex; // Don't exceed the array length
-    });
+    });*/
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
   };
 
   const getFlashCards = async () => {
@@ -163,9 +168,9 @@ export default function FlashCards() {
     }
   };
 
-  const handleCarouselChange = (currentItem, pageIndex) => {
+  /*const handleCarouselChange = (currentItem, pageIndex) => {
     setCurrentIndex(pageIndex); // Update the current index when carousel changes
-  };
+  };*/
 
   const fetchMasteredCount = async () => {
     try {
@@ -196,11 +201,12 @@ export default function FlashCards() {
     return flashcards[currentIndex];
   };
 
+
   return (
     <GradientBackground>
       <Title>Level {levelId}: {levelName}</Title>
       <CarouselContainer>
-        <Carousel 
+        {/*<Carousel 
           ref={carouselRef} // Attach the ref here
           breakPoints={breakPoints} 
           pagination={false} 
@@ -215,7 +221,27 @@ export default function FlashCards() {
               meaning={flashcard.meaning}
             />
           ))}
-        </Carousel>
+            
+        </Carousel>*/}
+
+        <Swiper
+        navigation={true}
+        modules={[Navigation]}
+        className="mySwiper"
+        onSlideChange={(swiper) => handleSlideChange(swiper)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)} // Store swiper instance in ref
+        >
+        {flashcards.map((flashcard, index) => (
+                  <SwiperSlide key={index}>
+                    <FlippingCard
+              key={flashcard.wordid}
+              isFlipped={isFlipped}
+              word={flashcard.word}
+              meaning={flashcard.meaning}
+            />
+                  </SwiperSlide>
+                ))}
+        </Swiper>
       </CarouselContainer>
       <ButtonContainer>
         <StyledButton variant="contained" color="success" onClick={handleGreenClick}>Aware</StyledButton>
