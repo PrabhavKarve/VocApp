@@ -56,10 +56,11 @@ const StyledButton = styled(Button)({
 
 // Main LevelCard Component
 const LevelCard = ({ levelId, levelName, userEmail, userName }) => {
+  // Call onCardClick when the card is clicked
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/flash-card', { state: { levelId, levelName, userEmail, userName } });
+    navigate('flash-card', { state: { levelId, levelName, userEmail, userName } });
   };
 
   return (

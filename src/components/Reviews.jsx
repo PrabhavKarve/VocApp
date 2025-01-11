@@ -66,7 +66,7 @@ export default function Reviews() {
   };
 
   return (
-    <Container sx={{ padding: "20px", maxWidth: "350px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Container sx={{ padding: "20px", maxWidth: "350px", display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white' }}>
       <Typography variant="h4" align="center" gutterBottom sx={{ fontSize: '1.5rem' }}>
         Leave a Review
       </Typography>
@@ -118,7 +118,7 @@ export default function Reviews() {
           required
           size="small" // Make the TextField smaller
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Button type="submit" variant="contained" color="primary" >
           Submit Review
         </Button>
       </Box>

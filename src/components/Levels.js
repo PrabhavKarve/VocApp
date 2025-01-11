@@ -1,8 +1,9 @@
 import React from 'react';
 import { styled } from '@mui/system';
 import LevelCard from './LevelCard';
-import { Typography } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import { useLocation } from "react-router-dom";
+import { Link, Outlet } from 'react-router-dom';
 
 const Levels = () => {
   const location = useLocation();
@@ -66,33 +67,68 @@ const Levels = () => {
     fontWeight: 'bold',
     color: '#FFFFFF',
     textShadow: '0 3px 6px rgba(0, 0, 0, 0.3)',
-    marginBottom: '20px', // Add spacing below the title
+    marginBottom: '20px',
   });
 
   const PageBackground = styled('div')({
     minHeight: '100vh',
     display: 'flex',
-    flexDirection: 'column', // Arrange children vertically
-    alignItems: 'center', // Center horizontally
-    justifyContent: 'flex-start', // Start from the top
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     padding: '20px',
-    background: 'linear-gradient(135deg, #232526, #414345)', // Dark gradient background
+    background: 'linear-gradient(135deg, #232526, #414345)',
   });
+
+  const NavBar = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '15px',
+    marginBottom: '20px',
+  });
+
+  const NavButton = styled(Button)({
+    color: '#FFFFFF',
+    border: '1px solid rgba(255, 255, 255, 0.5)',
+    borderRadius: '5px',
+    textTransform: 'none',
+    fontSize: '1rem',
+    fontWeight: '500',
+    padding: '5px 15px',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    },
+  });
+
+  // Check if the current path is the reviews or tests path
+  const isReviewsPath = location.pathname === '/home/reviews';
+  const isTestsPath = location.pathname === '/home/tests';
+  const isLevelPath = location.pathname === '/home/flash-card';
 
   return (
     <PageBackground>
-      <Title>Levels</Title>
-      <LevelsContainer>
-        {levels.map((level) => (
-          <LevelCard
-            key={level.id}
-            levelId={level.id}
-            levelName={level.name}
-            userEmail={userEmail}
-            userName={userName}
-          />
-        ))}
-      </LevelsContainer>
+      <NavBar>
+        <NavButton component={Link} to="/home">Home</NavButton>
+        <NavButton component={Link} to="/home/tests" state={{ userName: userName }}>Tests</NavButton>
+        <NavButton component={Link} to="/home/reviews">Review</NavButton>
+      </NavBar>
+      <Outlet />
+
+      {!isReviewsPath && !isTestsPath && !isLevelPath && ( // Only render levels if not on the reviews or tests path
+        <div><Title>Levels</Title>
+        <LevelsContainer>
+          {levels.map((level) => (
+            <LevelCard
+              key={level.id}
+              levelId={level.id}
+              levelName={level.name}
+              userEmail={userEmail}
+              userName={userName}
+            />
+          ))}
+        </LevelsContainer>
+        </div>
+      )}
       <p style={{ color: '#d3d3d3', textAlign: 'center' }}>
         NOTE: The level names are the names or references of some amazing hip-hop artists as tribute to their vocabulary and lyricism.
       </p>
