@@ -19,14 +19,18 @@ const GradientBackground = styled(Box)({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  background: 'linear-gradient(145deg, #232526, #414345)', 
-  animation: 'gradientBackground 15s ease infinite',
-  '@keyframes gradientBackground': {
-    '0%': { backgroundPosition: '0% 50%' },
-    '50%': { backgroundPosition: '100% 50%' },
-    '100%': { backgroundPosition: '0% 50%' },
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)',
+    pointerEvents: 'none',
   },
-  backgroundSize: '200% 200%',
 });
 
 const ButtonContainer = styled(Box)({
@@ -37,42 +41,81 @@ const ButtonContainer = styled(Box)({
 });
 
 const StyledButton = styled(Button)({
-  maxWidth: '85px',
-  minWidth: '85px',
-  padding: '12px',
-  borderRadius: '14px',
-  fontWeight: '600',
+  maxWidth: '100px',
+  minWidth: '100px',
+  padding: '15px',
+  borderRadius: '15px',
+  fontWeight: '700',
+  fontSize: '14px',
   color: '#FFFFFF',
-  boxShadow: '0 6px 18px rgba(0, 0, 0, 0.25)',
-  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.3)',
+  transition: 'all 0.3s ease',
   '&:hover': {
-    transform: 'scale(1.08)',
-    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.35)',
+    transform: 'translateY(-3px) scale(1.05)',
+    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)',
+  },
+  '&.MuiButton-containedSuccess': {
+    background: 'linear-gradient(45deg, #4caf50, #2e7d32)',
+    '&:hover': {
+      background: 'linear-gradient(45deg, #2e7d32, #4caf50)',
+    },
+  },
+  '&.MuiButton-containedPrimary': {
+    background: 'linear-gradient(45deg, #667eea, #764ba2)',
+    '&:hover': {
+      background: 'linear-gradient(45deg, #764ba2, #667eea)',
+    },
+  },
+  '&.MuiButton-containedError': {
+    background: 'linear-gradient(45deg, #f44336, #c62828)',
+    '&:hover': {
+      background: 'linear-gradient(45deg, #c62828, #f44336)',
+    },
   },
 });
 
 const CarouselContainer = styled(Box)({
   width: '70%',
   margin: '0 auto',
-  padding: '30px',
-  borderRadius: '20px',
-  background: 'linear-gradient(145deg, #ECEFF1, #CFD8DC)',
-  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+  padding: '40px',
+  borderRadius: '25px',
+  background: 'rgba(255, 255, 255, 0.1)',
+  backdropFilter: 'blur(20px)',
+  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+  border: '1px solid rgba(255, 255, 255, 0.3)',
+  position: 'relative',
+  overflow: 'hidden',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(102, 126, 234, 0.05))',
+    pointerEvents: 'none',
+  },
 });
 
 const Title = styled(Typography)({
   textAlign: 'center',
-  fontSize: '2rem',
-  fontWeight: 'bold',
-  color: '#FFFFFF',
-  marginBottom: '20px',
-  textShadow: '0 3px 6px rgba(0, 0, 0, 0.3)',
+  fontSize: '2.5rem',
+  fontWeight: '700',
+  background: 'linear-gradient(45deg, #FFFFFF, #E8EAF6)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+  marginBottom: '30px',
+  textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+  position: 'relative',
+  zIndex: 1,
 });
 
 const ProgressText = styled(Typography)({
   color: '#FFF', 
-  fontWeight: 'bold',
-  fontSize: '0.85rem',
+  fontWeight: '700',
+  fontSize: '1rem',
+  textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
 });
 
 export default function FlashCards() {
@@ -250,20 +293,29 @@ export default function FlashCards() {
       </ButtonContainer>
       
       {/* Progress bar container */}
-      <Box display="flex" alignItems="center" justifyContent="center" marginTop={2} width="100%">
-        <Box width="50%" marginRight={1}>
+      <Box display="flex" alignItems="center" justifyContent="center" marginTop={3} width="100%" sx={{ position: 'relative', zIndex: 1 }}>
+        <Box width="50%" marginRight={2} sx={{
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '15px',
+          padding: '8px',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }}>
           <LinearProgress 
             variant="determinate" 
             value={masteredCount} 
             sx={{
-              height: 12,
-              borderRadius: 6,
-              backgroundColor: '#e0e0e0',
-              '& .MuiLinearProgress-bar': { backgroundColor: '#00e676' }
+              height: 16,
+              borderRadius: 8,
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              '& .MuiLinearProgress-bar': { 
+                background: 'linear-gradient(45deg, #4caf50, #2e7d32)',
+                borderRadius: 8,
+              }
             }} 
           />
         </Box>
-        <Box minWidth={35}>
+        <Box minWidth={50}>
         <ProgressText variant="body2">
           {masteredCount >= 0 ? `${masteredCount}%` : "Loading..."}
           </ProgressText>

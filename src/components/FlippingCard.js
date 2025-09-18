@@ -74,7 +74,7 @@ const FlippingCard = ({ isFlipped, handleCardClick, currentCard, cards, word, me
               </Typography>
         </FlippingCardFront>
         <FlippingCardBack>
-        <Typography className='para'v variant="body1" color="text.success">
+        <Typography className='para' variant="body1" color="text.success">
                 {meaning}
         </Typography>
         </FlippingCardBack>

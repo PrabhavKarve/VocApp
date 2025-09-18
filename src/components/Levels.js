@@ -51,23 +51,40 @@ const Levels = () => {
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: '20px',
-    padding: '30px',
+    padding: '40px',
     maxWidth: '1200px',
     margin: '0 auto',
-    borderRadius: '15px',
+    borderRadius: '20px',
     background: 'rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(10px)',
-    boxShadow: '0 15px 25px rgba(0, 0, 0, 0.2)',
-    border: '1px solid rgba(255, 255, 255, 0.2)',
+    backdropFilter: 'blur(15px)',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(102, 126, 234, 0.05))',
+      pointerEvents: 'none',
+    },
   });
 
   const Title = styled(Typography)({
     textAlign: 'center',
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    textShadow: '0 3px 6px rgba(0, 0, 0, 0.3)',
-    marginBottom: '20px',
+    fontSize: '2.5rem',
+    fontWeight: '700',
+    background: 'linear-gradient(45deg, #FFFFFF, #E8EAF6)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+    marginBottom: '30px',
+    position: 'relative',
+    zIndex: 1,
   });
 
   const PageBackground = styled('div')({
@@ -77,7 +94,18 @@ const Levels = () => {
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: '20px',
-    background: 'linear-gradient(135deg, #232526, #414345)',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      background: 'radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)',
+      pointerEvents: 'none',
+    },
   });
 
   const NavBar = styled('div')({
@@ -89,14 +117,19 @@ const Levels = () => {
 
   const NavButton = styled(Button)({
     color: '#FFFFFF',
-    border: '1px solid rgba(255, 255, 255, 0.5)',
-    borderRadius: '5px',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    borderRadius: '10px',
     textTransform: 'none',
     fontSize: '1rem',
-    fontWeight: '500',
-    padding: '5px 15px',
+    fontWeight: '600',
+    padding: '8px 20px',
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    transition: 'all 0.3s ease',
     '&:hover': {
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      transform: 'translateY(-2px)',
+      boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
     },
   });
 
@@ -129,7 +162,20 @@ const Levels = () => {
         </LevelsContainer>
         </div>
       )}
-      <p style={{ color: '#d3d3d3', textAlign: 'center' }}>
+      <p style={{ 
+        color: 'rgba(255, 255, 255, 0.8)', 
+        textAlign: 'center',
+        fontSize: '14px',
+        fontStyle: 'italic',
+        marginTop: '20px',
+        padding: '15px',
+        background: 'rgba(255, 255, 255, 0.1)',
+        borderRadius: '10px',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        maxWidth: '600px',
+        margin: '20px auto 0'
+      }}>
         NOTE: The level names are the names or references of some amazing hip-hop artists as tribute to their vocabulary and lyricism.
       </p>
     </PageBackground>
