@@ -19,7 +19,7 @@ const GradientBackground = styled(Box)({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  background: 'linear-gradient(135deg, #0f766e 0%, #059669 100%)',
   position: 'relative',
   '&::before': {
     content: '""',
@@ -61,9 +61,9 @@ const StyledButton = styled(Button)({
     },
   },
   '&.MuiButton-containedPrimary': {
-    background: 'linear-gradient(45deg, #667eea, #764ba2)',
+    background: 'linear-gradient(45deg, #0f766e, #059669)',
     '&:hover': {
-      background: 'linear-gradient(45deg, #764ba2, #667eea)',
+      background: 'linear-gradient(45deg, #059669, #0f766e)',
     },
   },
   '&.MuiButton-containedError': {
@@ -81,7 +81,7 @@ const CarouselContainer = styled(Box)({
   borderRadius: '25px',
   background: 'rgba(255, 255, 255, 0.1)',
   backdropFilter: 'blur(20px)',
-  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(15, 118, 110, 0.2)',
   border: '1px solid rgba(255, 255, 255, 0.3)',
   position: 'relative',
   overflow: 'hidden',
@@ -92,7 +92,7 @@ const CarouselContainer = styled(Box)({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(102, 126, 234, 0.05))',
+    background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(15, 118, 110, 0.05))',
     pointerEvents: 'none',
   },
 });

@@ -52,7 +52,7 @@ const SignUpPage = () => {
       component="main"
       maxWidth="xs"
       sx={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #0f766e 0%, #059669 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -60,7 +60,7 @@ const SignUpPage = () => {
         paddingTop: '30px',
         paddingBottom: '30px',
         margin: 'auto',
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.4)',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(15, 118, 110, 0.4)',
         border: '1px solid rgba(255, 255, 255, 0.2)',
         position: 'relative',
         overflow: 'hidden',
@@ -98,14 +98,14 @@ const SignUpPage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05))',
+            background: 'linear-gradient(45deg, rgba(15, 118, 110, 0.05), rgba(5, 150, 105, 0.05))',
             pointerEvents: 'none',
           },
         }}
       >
         <Typography component="h1" variant="h4" sx={{ 
           fontWeight: '700', 
-          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          background: 'linear-gradient(45deg, #0f766e, #059669)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -122,7 +122,7 @@ const SignUpPage = () => {
         }}>
             Already have an account?{' '}
             <Link to="/" style={{ 
-              color: '#667eea', 
+              color: '#0f766e', 
               textDecoration: 'none',
               fontWeight: '600',
               '&:hover': {
@@ -203,13 +203,13 @@ const SignUpPage = () => {
               fontWeight: 'bold',
               fontSize: '16px',
               color: '#fff',
-              background: 'linear-gradient(45deg, #667eea, #764ba2)',
-              boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
+              background: 'linear-gradient(45deg, #0f766e, #059669)',
+              boxShadow: '0 8px 25px rgba(15, 118, 110, 0.3)',
               transition: 'all 0.3s ease',
               '&:hover': {
-                background: 'linear-gradient(45deg, #764ba2, #667eea)',
+                background: 'linear-gradient(45deg, #059669, #0f766e)',
                 transform: 'translateY(-2px)',
-                boxShadow: '0 12px 35px rgba(102, 126, 234, 0.4)',
+                boxShadow: '0 12px 35px rgba(15, 118, 110, 0.4)',
               },
             }}
           >

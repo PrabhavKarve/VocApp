@@ -25,7 +25,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   background: 'rgba(255, 255, 255, 0.1)',
   backdropFilter: 'blur(15px)',
   color: '#FFF',
-  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(15, 118, 110, 0.2)',
   border: '1px solid rgba(255, 255, 255, 0.3)',
   transition: 'all 0.3s ease',
   position: 'relative',
@@ -37,12 +37,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))',
+    background: 'linear-gradient(45deg, rgba(15, 118, 110, 0.1), rgba(5, 150, 105, 0.1))',
     pointerEvents: 'none',
   },
   '&:hover': {
     transform: 'translateY(-10px)',
-    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(102, 126, 234, 0.4)',
+    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(15, 118, 110, 0.4)',
   },
 }));
 
@@ -51,16 +51,16 @@ const StyledButton = styled(Button)({
   minWidth: 50,
   minHeight: 50,
   borderRadius: '50%',
-  background: 'linear-gradient(45deg, #667eea, #764ba2)',
+  background: 'linear-gradient(45deg, #0f766e, #059669)',
   color: '#FFF',
   fontWeight: 'bold',
   fontSize: '16px',
-  boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)',
+  boxShadow: '0 8px 25px rgba(15, 118, 110, 0.3)',
   transition: 'all 0.3s ease',
   '&:hover': {
     transform: 'scale(1.1)',
-    background: 'linear-gradient(45deg, #764ba2, #667eea)',
-    boxShadow: '0 12px 35px rgba(102, 126, 234, 0.4)',
+    background: 'linear-gradient(45deg, #059669, #0f766e)',
+    boxShadow: '0 12px 35px rgba(15, 118, 110, 0.4)',
   },
 });
 

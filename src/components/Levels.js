@@ -57,7 +57,7 @@ const Levels = () => {
     borderRadius: '20px',
     background: 'rgba(255, 255, 255, 0.1)',
     backdropFilter: 'blur(15px)',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(15, 118, 110, 0.2)',
     border: '1px solid rgba(255, 255, 255, 0.3)',
     position: 'relative',
     overflow: 'hidden',
@@ -68,7 +68,7 @@ const Levels = () => {
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(102, 126, 234, 0.05))',
+      background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(15, 118, 110, 0.05))',
       pointerEvents: 'none',
     },
   });
@@ -94,7 +94,7 @@ const Levels = () => {
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: '20px',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: 'linear-gradient(135deg, #0f766e 0%, #059669 100%)',
     position: 'relative',
     '&::before': {
       content: '""',
